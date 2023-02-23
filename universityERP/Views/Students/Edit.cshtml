@@ -1,0 +1,132 @@
+﻿@model universityERP.Models.Student
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+
+
+<main class="main-content  mt-0">
+    <section>
+        <div class="page-header min-vh-75">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-6 col-md-6 d-flex flex-column mx-auto">
+                        <div class="card card-plain mt-8" style="margin-top:20px !important">
+                            <div class="card-header pb-0 text-left bg-transparent">
+                                <h3 class="font-weight-bolder text-info text-gradient">Edit</h3>
+
+                            </div>
+                            <!-- Form start -->
+                            @using (Html.BeginForm())
+                            {
+                                @Html.HiddenFor(model => model.studentId)
+                                @Html.AntiForgeryToken()
+                                <div class="card-body">
+                                    <form role="form">
+
+
+                                        <label>First Name</label>
+                                        <div class="mb-3">
+                                            @Html.DisplayFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.HiddenFor(model => model.firstName)
+                                        </div>
+
+
+                                        <label>Last Name</label>
+                                        <div class="mb-3">
+
+                                            @Html.DisplayFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.HiddenFor(model => model.lastName)
+                                        </div>
+
+                                        <label>Major</label>
+                                        <div class="mb-3">
+                                            @Html.DisplayFor(model => model.Major.majorName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.HiddenFor(model => model.majorId)
+                                        </div>
+
+
+
+
+                                        <label>Tawjihi GPA</label>
+                                        <div class="mb-3">
+                                            @Html.DisplayFor(model => model.tawjihiAvg, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.HiddenFor(model => model.tawjihiAvg)
+
+                                        </div>
+
+
+
+                                        <div class="mb-3">
+                                            <label name="userEmail" id="userEmaillbl">Email </label>
+                                            @Html.DisplayFor(model => model.userEmail, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.HiddenFor(model => model.userEmail)
+                                        </div>
+
+
+
+                                        <label>Status</label>
+
+                                        <div class="mb-3">
+                                            @*<div class="checkbox">
+                                                    @Html.EditorFor(model => model.isAccepted, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                </div>*@
+
+
+                                            <select name="isAccepted">
+                                                <option value="false">
+                                                    Select
+                                                </option>
+                                                <option value="false">
+                                                    In Progress
+                                                </option>
+                                                <option value="true">
+                                                    Accepte
+                                                </option>
+
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.isAccepted, "", new { @class = "text-danger" })
+
+                                        </div>
+
+
+
+
+
+
+                                        <div class="text-center">
+                                            <input type="submit" value="Save" class="btn bg-gradient-info w-100 mt-4 mb-0" />
+                                        </div>
+
+
+
+
+
+                                        <br />
+
+                                        <div class="text-center">
+                                            <a href="~/Students/Accepted" class="btn bg-gradient-dark w-100">
+                                                Back to List
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+
